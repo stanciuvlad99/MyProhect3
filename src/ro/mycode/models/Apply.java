@@ -5,6 +5,12 @@ public class Apply {
     private int studentId=0;
     private int jobId=0;
 
+    public Apply(int applyId, int studentId, int jobId) {
+        this.applyId = applyId;
+        this.studentId = studentId;
+        this.jobId = jobId;
+    }
+
     public Apply(String text){
         String []split=text.split(",");
         this.applyId=Integer.parseInt(split[0]);
