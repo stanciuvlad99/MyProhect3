@@ -29,11 +29,13 @@ public class ControlStudent {
         }
     }
 
+    //todo: functie ce afiseaza toti studentii
     public void read(){
         for (int i=0; i<students.size(); i++){
             System.out.println(students.get(i).descriere());
         }
     }
+
 
 
 }

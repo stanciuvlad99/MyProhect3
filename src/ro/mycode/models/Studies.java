@@ -7,6 +7,14 @@ public class Studies {
     private String department = "";
     private int year = 0;
 
+    public Studies(int studiesId, int studentId, String name, String department, int year) {
+        this.studiesId = studiesId;
+        this.studentId = studentId;
+        this.name = name;
+        this.department = department;
+        this.year = year;
+    }
+
     public Studies(String text) {
         String[] split = text.split(",");
         this.studiesId = Integer.parseInt(split[0]);
@@ -57,7 +65,7 @@ public class Studies {
     }
 
     public String descriere() {
-        String descreire = "Id-ul studiului este " + studiesId + ", numele scolii/cursului este" + name +
+        String descreire = "Id-ul studiului este " + studiesId + ", numele scolii/cursului este " + name +
                 ", departamentul este " + department + ", iar anul finalizarii este " + year;
         return descreire;
     }

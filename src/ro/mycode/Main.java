@@ -1,24 +1,15 @@
 package ro.mycode;
 
 import ro.mycode.controllers.*;
+import ro.mycode.view.ViewStudent;
 
 public class Main {
     public static void main(String[] args) {
-//        ControlStudent controlStudent = new ControlStudent();
-//        controlStudent.read();
+
+        ViewStudent viewStudent = new ViewStudent();
+        System.out.println(viewStudent);
 
 
-//        ControlApply controlApply = new ControlApply();
-//        controlApply.read();
-
-//        ControlAdmin controlAdmin = new ControlAdmin();
-//        controlAdmin.read();
-
-//        ControlJob controlJob = new ControlJob();
-//        controlJob.read();
-
-        ControlStudies controlStudies = new ControlStudies();
-        controlStudies.read();
 
 
     }

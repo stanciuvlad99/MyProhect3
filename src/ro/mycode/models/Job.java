@@ -5,6 +5,12 @@ public class Job {
     public String name="";
     public String department="";
 
+    public Job(int jobId, String name, String department) {
+        this.jobId = jobId;
+        this.name = name;
+        this.department = department;
+    }
+
     public Job(String text){
         String []split=text.split(",");
         this.jobId=Integer.parseInt(split[0]);

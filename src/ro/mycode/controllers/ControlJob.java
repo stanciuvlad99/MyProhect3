@@ -29,9 +29,38 @@ public class ControlJob {
         }
     }
 
+    //todo: functie ce afiseaza toate joburile
     public void read(){
         for (int i=0; i<jobs.size(); i++){
             System.out.println(jobs.get(i).descriere());
         }
     }
+
+    //todo: functie ce returneaza un job, primeste jobId ca prametru
+    public Job findById(int jobId){
+        for (int i=0; i<jobs.size(); i++){
+            if (jobs.get(i).getJobId()==jobId){
+                return jobs.get(i);
+            }
+        }
+        return null;
+    }
+
+    //todo: functie ce returneaza un job dupa nume, primeste nume ca parametru
+    public Job findByName(String name){
+        for (int i=0; i<jobs.size(); i++){
+            if (jobs.get(i).getName().equals(name)){
+                return jobs.get(i);
+            }
+        }
+        return null;
+    }
+
+    //todo: functie ce adauga un job in lista, primeste constructor ca parametru
+    public void add(Job job){
+        this.jobs.add(job);
+    }
+
+
+
 }
