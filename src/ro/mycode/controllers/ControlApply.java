@@ -3,6 +3,8 @@ package ro.mycode.controllers;
 import ro.mycode.models.Apply;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -103,5 +105,27 @@ public class ControlApply {
         return pozitieMaximaJob(frecventa());
     }
 
+    //todo: functie ce returneaza toate joburile
+    public String toSave(){
+        int i=0;
+        String text="";
+        for (i=0; i<applies.size()-1; i++){
+            text+=applies.get(i).toSave()+"\n";
+        }
+        text+=applies.get(i).toSave();
+        return text;
+    }
 
+    //todo: functie ce salveaza in fisier text apply
+    public void save() {
+        try {
+            File file = new File(FILE_PATH);
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(toSave());
+            printWriter.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

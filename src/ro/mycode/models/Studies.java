@@ -69,4 +69,9 @@ public class Studies {
                 ", departamentul este " + department + ", iar anul finalizarii este " + year;
         return descreire;
     }
+
+    public String toSave(){
+        return this.studentId + "," + this.studiesId + ","+ this.name + "," + this.department + "," + this.year;
+
+    }
 }

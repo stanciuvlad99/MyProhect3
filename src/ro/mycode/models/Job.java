@@ -47,4 +47,8 @@ public class Job {
                 + department;
         return descreire;
     }
+
+    public String toSave(){
+        return this.jobId + "," + this.name + "," +this.department;
+    }
 }

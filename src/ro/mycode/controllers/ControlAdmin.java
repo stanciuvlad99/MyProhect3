@@ -3,6 +3,8 @@ package ro.mycode.controllers;
 import ro.mycode.models.Admin;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,5 +46,34 @@ public class ControlAdmin {
             }
         }
         return null;
+    }
+
+    //todo: functie ce returneaza returneaza toti adminii
+    public String toSave(){
+        int i=0;
+        String text="";
+        for (i=0; i<admins.size()-1; i++){
+            text+=admins.get(i).toSave()+"\n";
+        }
+        text+=admins.get(i).toSave();
+        return text;
+    }
+
+    //todo: functie ce salveaza in fisier text admin
+    public void save() {
+        try {
+            File file = new File(FINAL_PATH);
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(toSave());
+            printWriter.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //todo: functie ce adaug un admin in baza de date, primesete constructor ca parametru
+    public void add(Admin admin){
+        this.admins.add(admin);
     }
 }

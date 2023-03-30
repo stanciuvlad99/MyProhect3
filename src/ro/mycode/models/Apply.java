@@ -47,4 +47,8 @@ public class Apply {
                 ", iar id-ul jobului este " + jobId;
         return descreire;
     }
+
+    public String toSave(){
+        return this.applyId + "," +this.studentId + "," + this.jobId;
+    }
 }

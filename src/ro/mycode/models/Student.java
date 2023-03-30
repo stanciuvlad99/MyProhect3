@@ -81,4 +81,9 @@ public class Student {
                 + password;
         return descriere;
     }
+
+    public String toSave(){
+        return this.studentId + "," + this.firstName + "," +this.lastName+ "," + this.age + "," + this.email + ","+
+        this.password;
+    }
 }

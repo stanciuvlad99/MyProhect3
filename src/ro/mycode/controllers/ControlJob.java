@@ -3,6 +3,8 @@ package ro.mycode.controllers;
 import ro.mycode.models.Job;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -100,6 +102,30 @@ public class ControlJob {
         }
         if ((job.getJobId()==0)==false){
             update.setJobId(job.getJobId());
+        }
+    }
+
+    //todo: functie ce returneaza toate joburile
+    public String toSave(){
+        int i=0;
+        String text="";
+        for (i=0; i<jobs.size()-1; i++){
+            text+=jobs.get(i).toSave()+"\n";
+        }
+        text+=jobs.get(i).toSave();
+        return text;
+    }
+
+    //todo: functie ce salveaza in fisier text job
+    public void save(){
+        try {
+            File file = new File(FINAL_URL);
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(toSave());
+            printWriter.close();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
