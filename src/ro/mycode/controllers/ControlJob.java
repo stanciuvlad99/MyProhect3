@@ -61,6 +61,46 @@ public class ControlJob {
         this.jobs.add(job);
     }
 
+    //todo: functie ce returneaza un id valid
+    public int nextId(){
+        if (jobs.size()==0){
+            return -1;
+        }
+        return jobs.get(jobs.size()-1).getJobId()+1;
+    }
 
+    //todo:functie ce elimina un job din baza de date, primeste constructor ca parametru
+    public void remove(Job job){
+        this.jobs.remove(job);
+    }
+
+    //todo: functie ce returneaza un job, primeste ca pramametru jobId
+    public Job findByJobId(int jobId){
+        for (int i=0; i<jobs.size(); i++){
+            if (jobs.get(i).getJobId()==jobId){
+                return jobs.get(i);
+            }
+        }
+        return null;
+    }
+
+    //todo: functie ce face face update numelui unui job, primeste constructor ca parametru
+    public void updateName(Job job){
+        Job update= findByJobId(job.getJobId());
+        if (job.getName().equals("")==false){
+            update.setName(job.getName());
+        }
+    }
+
+    //todo: functie ce face update id-ului si departamentului unui job, primeste constructor ca parametru
+    public void updateIdDepartment(Job job){
+        Job update=findByName(job.getName());
+        if (job.getDepartment().equals("")==false){
+            update.setDepartment(job.getDepartment());
+        }
+        if ((job.getJobId()==0)==false){
+            update.setJobId(job.getJobId());
+        }
+    }
 
 }

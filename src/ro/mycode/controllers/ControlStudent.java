@@ -36,6 +36,34 @@ public class ControlStudent {
         }
     }
 
+    //todo: functie ce returneaza un student, primeste firstName si lastName ca parametru
+    public Student findByFirstNameLastName(String firstName, String lastName){
+        for (int i=0; i<students.size(); i++){
+            if (students.get(i).getFirstName().equals(firstName) && students.get(i).getLastName().equals(lastName)){
+                return students.get(i);
+            }
+        }
+        return null;
+    }
 
+    //todo: functie ce returneaza un id valid
+    public int nextId(){
+        if (students.size()==0){
+            return -1;
+        }
+        return students.get(students.size()-1).getStudentId()+1;
+    }
+
+    //todo: functie ce adauga un student in lista, primeste constructor ca parmetru
+    public void add(Student student){
+        this.students.add(student);
+    }
+
+    //todo: functie ce elimina un student, primeste constructor ca parametru
+    public void remove(Student student){
+        this.students.remove(student);
+    }
+
+    //todo
 
 }

@@ -8,6 +8,15 @@ public class Student {
     private String email = "";
     private String password = "";
 
+    public Student(int studentId, String firstName, String lastName, int age, String email, String password) {
+        this.studentId = studentId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+    }
+
     public Student(String text) {
         String[] split = text.split(",");
         this.studentId = Integer.parseInt(split[0]);
@@ -17,7 +26,6 @@ public class Student {
         this.email = split[4];
         this.password = split[5];
     }
-
 
     public int getStudentId() {
         return studentId;
