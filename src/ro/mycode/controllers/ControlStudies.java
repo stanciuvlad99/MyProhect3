@@ -3,6 +3,9 @@ package ro.mycode.controllers;
 import ro.mycode.models.Studies;
 
 import java.io.File;
+import java.io.FileFilter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -103,6 +106,30 @@ public class ControlStudies {
         }
         if ((studies.getYear()==0)==false){
             update.setYear(studies.getYear());
+        }
+    }
+
+    //todo: functie ce returneaza toate studiile
+    public String toSave(){
+        int i=0;
+        String text="";
+        for (i=0; i<studies.size()-1; i++){
+            text+=studies.get(i).toSave()+"\n";
+        }
+        text+=studies.get(i).toSave();
+        return text;
+    }
+
+    //todo: functie ce salveaza in fiser text studies
+    public void save() {
+        try {
+            File file = new File(FILE_PATH);
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(toSave());
+            printWriter.close();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

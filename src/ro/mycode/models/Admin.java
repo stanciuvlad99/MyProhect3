@@ -61,4 +61,8 @@ public class Admin {
                 lastName + ", iar adresa de mail si parola sunt " + email + " " + password;
         return descriere;
     }
+
+    public String toSave() {
+        return this.adminId + "," + this.email + "," + this.password + "," + this.firstName + "," + this.lastName + ",";
+    }
 }

@@ -3,6 +3,8 @@ package ro.mycode.controllers;
 import ro.mycode.models.Student;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -72,6 +74,30 @@ public class ControlStudent {
             }
         }
         return null;
+    }
+
+    //todo: functie ce reuturneaza toti studentii
+    public String toSave(){
+        int i=0;
+        String text="";
+        for (i=0; i<students.size()-1; i++){
+            text+=students.get(i).toSave()+"\n";
+        }
+        text+=students.get(i).toSave();
+        return text;
+    }
+
+    //todo: functie ce salveaza in fisierul text student
+    public void save(){
+        try {
+            File file = new File(FILE_PATH);
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(toSave());
+            printWriter.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
