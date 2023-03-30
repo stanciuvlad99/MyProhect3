@@ -18,8 +18,8 @@ public class ViewStudent {
     private ControlApply controlApply;
     private ControlJob controlJob;
 
-    public ViewStudent() {
-        this.student = new Student("1,Labus,Georgescu,23,test@gmail.com,pass1234!");
+    public ViewStudent(Student student) {
+        this.student = student;
         this.controlStudies = new ControlStudies();
         this.controlJob = new ControlJob();
         this.controlApply = new ControlApply();
@@ -27,6 +27,8 @@ public class ViewStudent {
     }
 
     private void menu() {
+        System.out.println("Bine ai venit" + " " + student.getFirstName() + " " +student.getLastName() + " !");
+        System.out.println();
         System.out.println("Apasati tasta 1 pentru a vedea toate joburile");
         System.out.println("Apasati tasta 2 pentru a vedea joburile la care ati aplicat");
         System.out.println("Apasati tasta 3 pentru a aplica la un job");

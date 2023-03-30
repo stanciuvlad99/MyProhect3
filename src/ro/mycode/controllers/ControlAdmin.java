@@ -29,9 +29,20 @@ public class ControlAdmin {
         }
     }
 
+    //todo: functie ce afiseasa toti adminii
     public void read(){
         for (int i=0; i<admins.size(); i++){
             System.out.println(admins.get(i).descriere());
         }
+    }
+
+    //todo: functie ce returneaza admin, primeste email si password ca parametri
+    public Admin findByEmailPassword(String email, String password){
+        for (int i=0; i<admins.size(); i++){
+            if (admins.get(i).getEmail().equals(email) && admins.get(i).getPassword().equals(password)){
+                return admins.get(i);
+            }
+        }
+        return null;
     }
 }
