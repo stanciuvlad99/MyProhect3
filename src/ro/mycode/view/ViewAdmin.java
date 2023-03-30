@@ -3,6 +3,7 @@ package ro.mycode.view;
 import ro.mycode.controllers.ControlApply;
 import ro.mycode.controllers.ControlJob;
 import ro.mycode.controllers.ControlStudent;
+import ro.mycode.models.Admin;
 import ro.mycode.models.Apply;
 import ro.mycode.models.Job;
 import ro.mycode.models.Student;
@@ -11,18 +12,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ViewAdmin {
+    private Admin admin;
     private ControlApply controlApply;
     private ControlStudent controlStudent;
     private ControlJob controlJob;
 
-    public ViewAdmin() {
-        this.controlApply=new ControlApply();
+    public ViewAdmin(Admin admin) {
+        this.admin= admin;
+        this.controlApply = new ControlApply();
         this.controlStudent = new ControlStudent();
         this.controlJob = new ControlJob();
         play();
     }
 
     public void menu() {
+        System.out.println("Bine ai venit " + admin.getFirstName() + " " + admin.getLastName() + " !");
+        System.out.println();
         System.out.println("Apasati tasta 1 pentru a vedea toti studentii");
         System.out.println("Apasati tasta 2 pentru a adauga un student in baza de date");
         System.out.println("Apasati tasta 3 pentru a elimina un student din baza de date");
@@ -58,10 +63,12 @@ public class ViewAdmin {
                 case 6:
                     elimnareJob();
                     break;
-                case 7:updateJob();
-                break;
-                case 8:studiiStudent();
-                break;
+                case 7:
+                    updateJob();
+                    break;
+                case 8:
+                    studiiStudent();
+                    break;
                 default:
                     break;
             }
@@ -142,41 +149,41 @@ public class ViewAdmin {
         }
     }
 
-    private void updateJob(){
+    private void updateJob() {
         System.out.println("Introduceti numele Jobului");
         Scanner scanner = new Scanner(System.in);
-        String name=scanner.nextLine();
+        String name = scanner.nextLine();
         Job job = controlJob.findByName(name);
-        if (job!=null){
+        if (job != null) {
             System.out.println("Introduceti noul nume al jobului");
-            String newName=scanner.nextLine();
+            String newName = scanner.nextLine();
             controlJob.updateName(new Job(job.getJobId(), newName, job.getDepartment()));
             System.out.println("Introduceti noul departament");
-            String newDepartment=scanner.nextLine();
+            String newDepartment = scanner.nextLine();
             System.out.println("Introduceti noul id");
-            int newId=Integer.parseInt(scanner.nextLine());
+            int newId = Integer.parseInt(scanner.nextLine());
             controlJob.updateIdDepartment(new Job(newId, job.getName(), newDepartment));
             System.out.println("Ati facut update jobului cu succes");
-        }else {
-            System.out.println(name +" nu exista in baza de date");
+        } else {
+            System.out.println(name + " nu exista in baza de date");
         }
     }
 
-    private void studiiStudent(){
+    private void studiiStudent() {
         System.out.println("Introduceti prenumele studentului");
         Scanner scanner = new Scanner(System.in);
-        String firstName=scanner.nextLine();
+        String firstName = scanner.nextLine();
         System.out.println("Introduceti numele de familie al studentului");
-        String lastName=scanner.nextLine();
-        Student student = controlStudent.findByFirstNameLastName(firstName,lastName);
-        if (student!=null){
+        String lastName = scanner.nextLine();
+        Student student = controlStudent.findByFirstNameLastName(firstName, lastName);
+        if (student != null) {
             ArrayList<Apply> applies = controlApply.aplcariPersonale(student.getStudentId());
-            for (int i=0; i<applies.size(); i++){
+            for (int i = 0; i < applies.size(); i++) {
                 Job job = controlJob.findByJobId(applies.get(i).getJobId());
                 System.out.println(job.descriere());
             }
-        }else {
-            System.out.println(firstName +" "+ lastName + " nu exista in baza de date");
+        } else {
+            System.out.println(firstName + " " + lastName + " nu exista in baza de date");
         }
     }
 }

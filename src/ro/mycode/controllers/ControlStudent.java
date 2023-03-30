@@ -64,6 +64,14 @@ public class ControlStudent {
         this.students.remove(student);
     }
 
-    //todo
+    //todo: functie ce returneaza un student, primeste email si parola ca parametri
+    public Student findByEmailPassword(String email, String password){
+        for (int i=0; i<students.size(); i++){
+            if (students.get(i).getEmail().equals(email) && students.get(i).getPassword().equals(password)){
+                return students.get(i);
+            }
+        }
+        return null;
+    }
 
 }
