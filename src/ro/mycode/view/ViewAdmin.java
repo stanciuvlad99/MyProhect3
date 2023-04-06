@@ -29,13 +29,13 @@ public class ViewAdmin {
         System.out.println("Bine ai venit " + admin.getFirstName() + " " + admin.getLastName() + " !");
         System.out.println();
         System.out.println("Apasati tasta 1 pentru a vedea toti studentii");
-        System.out.println("Apasati tasta 2 pentru a adauga un student in baza de date");
-        System.out.println("Apasati tasta 3 pentru a elimina un student din baza de date");
+        System.out.println("Apasati tasta 2 pentru a adauga un student.txt in baza de date");
+        System.out.println("Apasati tasta 3 pentru a elimina un student.txt din baza de date");
         System.out.println("Apasati tasta 4 pentru a vedea toate joburile");
-        System.out.println("Apasati tasta 5 pentru a adauga un job in baza de date");
-        System.out.println("Apasati tasta 6 pentru a elimina un job din lista");
+        System.out.println("Apasati tasta 5 pentru a adauga un job.txt in baza de date");
+        System.out.println("Apasati tasta 6 pentru a elimina un job.txt din lista");
         System.out.println("Apasati tasta 7 pentru a face update");
-        System.out.println("Apasati tasta 8 pentru a vedea studiile unui student");
+        System.out.println("Apasati tasta 8 pentru a vedea studiile unui student.txt");
     }
 
     public void play() {

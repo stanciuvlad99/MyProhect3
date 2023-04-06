@@ -2,7 +2,6 @@ package ro.mycode.view;
 
 import ro.mycode.controllers.ControlApply;
 import ro.mycode.controllers.ControlJob;
-import ro.mycode.controllers.ControlStudent;
 import ro.mycode.controllers.ControlStudies;
 import ro.mycode.models.Apply;
 import ro.mycode.models.Job;
@@ -31,13 +30,13 @@ public class ViewStudent {
         System.out.println();
         System.out.println("Apasati tasta 1 pentru a vedea toate joburile");
         System.out.println("Apasati tasta 2 pentru a vedea joburile la care ati aplicat");
-        System.out.println("Apasati tasta 3 pentru a aplica la un job");
+        System.out.println("Apasati tasta 3 pentru a aplica la un job.txt");
         System.out.println("Apasati tasta 4 pentru a renunta la aplicarea la un curs");
         System.out.println("Apasati tasta 5 pentru a vedea studiile dumneavoastra");
         System.out.println("Apasati tasta 6 pentru a adauga un studii la profilul dumneavoastra");
         System.out.println("Apasati tasta 7 pentru a elimina studii");
         System.out.println("Apasati tasta 8 pentru a face update studiilor");
-        System.out.println("Apasati tasta 9 pentru a vedea cel mai frecventat job");
+        System.out.println("Apasati tasta 9 pentru a vedea cel mai frecventat job.txt");
     }
 
     private void play() {
@@ -86,7 +85,7 @@ public class ViewStudent {
     private void aplicariJoburi() {
         ArrayList<Apply> applies = controlApply.aplcariPersonale(student.getStudentId());
         for (int i = 0; i < applies.size(); i++) {
-            Job job = controlJob.findById(applies.get(i).getJobId());
+            Job job = controlJob.findByJobId(applies.get(i).getJobId());
             System.out.println(job.descriere());
         }
     }
@@ -99,11 +98,11 @@ public class ViewStudent {
         if (job != null) {
             Apply apply = controlApply.findByStudentIdJobId(student.getStudentId(), job.getJobId());
             if (apply != null) {
-                System.out.println("Ati aplicat deja la acest job");
+                System.out.println("Ati aplicat deja la acest job.txt");
             } else {
                 Apply apply1 = new Apply(controlApply.nextId(), student.getStudentId(), job.getJobId());
                 controlApply.add(apply1);
-                System.out.println("Ati aplicat cu succes la acest job");
+                System.out.println("Ati aplicat cu succes la acest job.txt");
             }
         } else {
             System.out.println(nume + " nu exista in baza de date");
@@ -119,9 +118,9 @@ public class ViewStudent {
             Apply apply = controlApply.findByStudentIdJobId(student.getStudentId(), job.getJobId());
             if (apply != null) {
                 controlApply.remove(apply);
-                System.out.println("Ati anulat aplicrea la job");
+                System.out.println("Ati anulat aplicrea la job.txt");
             } else {
-                System.out.println("Nu ati aplicat la acest job");
+                System.out.println("Nu ati aplicat la acest job.txt");
             }
         } else {
             System.out.println(nume + " nu exista in baza de date");
@@ -182,7 +181,7 @@ public class ViewStudent {
     }
 
     private void jobFrecventat(){
-        Job job = controlJob.findById(controlApply.idJobFrecventat());
+        Job job = controlJob.findByJobId(controlApply.idJobFrecventat());
         System.out.println(job.descriere());
     }
 }

@@ -10,17 +10,22 @@ import java.util.Scanner;
 
 public class ControlApply {
     private ArrayList<Apply> applies;
-    private final String FILE_PATH="C:\\mycode\\OOP\\Incapsularea\\MyProject5\\src\\ro\\mycode\\data\\apply";
+    private final String FILE_PATH="C:\\mycode\\OOP\\Incapsularea\\MyProject5\\src\\ro\\mycode\\data\\apply.txt";
+
+    public ControlApply(ArrayList<Apply> applies){
+        this.applies=applies;
+    }
 
     public ControlApply(){
         this.applies= new ArrayList<>();
-        laod();
+        load(FILE_PATH);
     }
 
-    private void laod() {
+    public void load(String path) {
         try {
-            File file = new File(FILE_PATH);
+            File file = new File(path);
             Scanner scanner = new Scanner(file);
+            applies.clear();
             while (scanner.hasNextLine()){
                 String text=scanner.nextLine();
                 Apply apply = new Apply(text);
@@ -100,13 +105,16 @@ public class ControlApply {
         return pozitie;
     }
 
-    //todo: functie ce returneaza id-ul celui mai frecventat job
+    //todo: functie ce returneaza id-ul celui mai frecventat job.txt
     public int idJobFrecventat(){
         return pozitieMaximaJob(frecventa());
     }
 
     //todo: functie ce returneaza toate joburile
     public String toSave(){
+        if (applies.size()==0){
+            return "";
+        }
         int i=0;
         String text="";
         for (i=0; i<applies.size()-1; i++){
@@ -116,10 +124,10 @@ public class ControlApply {
         return text;
     }
 
-    //todo: functie ce salveaza in fisier text apply
-    public void save() {
+    //todo: functie ce salveaza in fisier text apply.txt
+    public void save(String path) {
         try {
-            File file = new File(FILE_PATH);
+            File file = new File(path);
             FileWriter fileWriter = new FileWriter(file);
             PrintWriter printWriter = new PrintWriter(fileWriter);
             printWriter.print(toSave());

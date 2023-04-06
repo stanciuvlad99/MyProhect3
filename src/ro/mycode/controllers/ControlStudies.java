@@ -11,17 +11,22 @@ import java.util.Scanner;
 
 public class ControlStudies {
     private ArrayList<Studies> studies;
-    private final String FILE_PATH="C:\\mycode\\OOP\\Incapsularea\\MyProject5\\src\\ro\\mycode\\data\\studies";
+    private final String FILE_PATH="C:\\mycode\\OOP\\Incapsularea\\MyProject5\\src\\ro\\mycode\\data\\studies.txt";
+
+    public ControlStudies(ArrayList<Studies> studies){
+        this.studies=studies;
+    }
 
     public ControlStudies(){
         this.studies=new ArrayList<>();
-        load();
+        load(FILE_PATH);
     }
 
-    private void load(){
+    public void load(String path){
         try {
-            File file = new File(FILE_PATH);
+            File file = new File(path);
             Scanner scanner = new Scanner(file);
+            studies.clear();
             while (scanner.hasNextLine()){
                 String text=scanner.nextLine();
                 Studies studies = new Studies(text);
@@ -111,6 +116,9 @@ public class ControlStudies {
 
     //todo: functie ce returneaza toate studiile
     public String toSave(){
+        if (studies.size()==0){
+            return "";
+        }
         int i=0;
         String text="";
         for (i=0; i<studies.size()-1; i++){
@@ -120,10 +128,10 @@ public class ControlStudies {
         return text;
     }
 
-    //todo: functie ce salveaza in fiser text studies
-    public void save() {
+    //todo: functie ce salveaza in fiser text studies.txt
+    public void save(String path) {
         try {
-            File file = new File(FILE_PATH);
+            File file = new File(path);
             FileWriter fileWriter = new FileWriter(file);
             PrintWriter printWriter = new PrintWriter(fileWriter);
             printWriter.print(toSave());
