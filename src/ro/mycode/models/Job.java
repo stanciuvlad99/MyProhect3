@@ -2,8 +2,8 @@ package ro.mycode.models;
 
 public class Job {
     private int jobId=0;
-    public String name="";
-    public String department="";
+    private String name="";
+    private String department="";
 
     public Job(int jobId, String name, String department) {
         this.jobId = jobId;

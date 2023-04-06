@@ -63,6 +63,6 @@ public class Admin {
     }
 
     public String toSave() {
-        return this.adminId + "," + this.email + "," + this.password + "," + this.firstName + "," + this.lastName + ",";
+        return this.adminId + "," + this.email + "," + this.password + "," + this.firstName + "," + this.lastName;
     }
 }
